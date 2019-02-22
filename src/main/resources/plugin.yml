@@ -1,0 +1,28 @@
+name: Fundamentals
+version: ${project.version}
+main: io.github.keirenw.fundamentals.Fundamentals
+api-version: 1.13
+authors: [Keiren_Waddell]
+
+commands:
+  ping:
+    description: Pong!
+    usage: /ping
+  pong:
+    description: We know ;)
+    usage: /pong
+  feed:
+    description: Sate your hunger.
+    usage: /feed
+  heal:
+    description: Heal yourself.
+    usage: /heal
+  sethome:
+    description: Set a home that you can teleport back to
+    usage: /sethome
+  home:
+    description: Teleport home
+    usage: /home
+  warp:
+    description: Create a warp to your current location
+    usage: /warp <name>
