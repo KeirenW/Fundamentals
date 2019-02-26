@@ -1,6 +1,9 @@
 package io.github.keirenw.fundamentals;
 
-import io.github.keirenw.fundamentals.Commands.*;
+import io.github.keirenw.fundamentals.Commands.CommandHome;
+import io.github.keirenw.fundamentals.Commands.CommandPing;
+import io.github.keirenw.fundamentals.Commands.CommandPong;
+import io.github.keirenw.fundamentals.Commands.CommandSetHome;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -26,11 +29,8 @@ public final class Fundamentals extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new EventListener(), this);
 		this.getCommand("ping").setExecutor(new CommandPing());
 		this.getCommand("pong").setExecutor(new CommandPong());
-		this.getCommand("feed").setExecutor(new CommandFeed());
-		this.getCommand("heal").setExecutor(new CommandHeal());
 		this.getCommand("sethome").setExecutor(new CommandSetHome(this));
 		this.getCommand("home").setExecutor(new CommandHome(this));
-		this.getCommand("warp").setExecutor(new CommandWarp());
 	}
 	
 	@Override
