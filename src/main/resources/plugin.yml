@@ -20,3 +20,5 @@ commands:
   slap:
     description: Slap a bitch
     usage: /slap [name]
+    permission: fundamentals.slap
+    permission-message: You don't have permssion to use this command
