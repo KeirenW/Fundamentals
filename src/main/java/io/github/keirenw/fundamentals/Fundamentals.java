@@ -1,21 +1,19 @@
 package io.github.keirenw.fundamentals;
 
-import io.github.keirenw.fundamentals.Commands.CommandHome;
-import io.github.keirenw.fundamentals.Commands.CommandPing;
-import io.github.keirenw.fundamentals.Commands.CommandPong;
-import io.github.keirenw.fundamentals.Commands.CommandSetHome;
+import io.github.keirenw.fundamentals.Commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
-public final class Fundamentals extends JavaPlugin {
+public final class Fundamentals extends JavaPlugin
+{
 	
 	@Override
 	public void onEnable()
 	{
 		//Check for config file, if not found generate from default in jar file
 		File file = new File(getDataFolder(), "config.yml");
-		if(!file.exists())
+		if (!file.exists())
 		{
 			getLogger().info("config.yml not found, generating...");
 			saveDefaultConfig();
@@ -31,6 +29,7 @@ public final class Fundamentals extends JavaPlugin {
 		this.getCommand("pong").setExecutor(new CommandPong());
 		this.getCommand("sethome").setExecutor(new CommandSetHome(this));
 		this.getCommand("home").setExecutor(new CommandHome(this));
+		this.getCommand("slap").setExecutor(new CommandSlap());
 	}
 	
 	@Override

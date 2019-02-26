@@ -17,3 +17,6 @@ commands:
   home:
     description: Teleport home
     usage: /home [name]
+  slap:
+    description: Slap a bitch
+    usage: /slap [name]
