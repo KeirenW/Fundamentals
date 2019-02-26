@@ -18,18 +18,33 @@ public class CommandSetHome implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
 	{
+		//Checks that the sender of the command is a player and not the console.
 		if(sender instanceof Player)
 		{
+			//Create a new instance of Player as the command sender.
 			Player player = (Player) sender;
 			
-			double xCoord = player.getLocation().getX();
-			double yCoord = player.getLocation().getY();
-			double zCoord = player.getLocation().getZ();
+			//Create an array to store the position and direction of the player
+			double[] coords = {player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch()};
 			
-			plugin.getConfig().set("players." + player.getName() + ".home.world", player.getWorld().getName());
-			plugin.getConfig().set("players." + player.getName() + ".home.x", xCoord);
-			plugin.getConfig().set("players." + player.getName() + ".home.y", yCoord);
-			plugin.getConfig().set("players." + player.getName() + ".home.z", zCoord);
+			if (args.length == 0) {
+				plugin.getConfig().set("player." + player.getName() + ".home.world", player.getWorld().getName());
+				plugin.getConfig().set("player." + player.getName() + ".home.x", coords[0]);
+				plugin.getConfig().set("player." + player.getName() + ".home.y", coords[1]);
+				plugin.getConfig().set("player." + player.getName() + ".home.z", coords[2]);
+				plugin.getConfig().set("player." + player.getName() + ".home.yaw", coords[3]);
+				plugin.getConfig().set("player." + player.getName() + ".home.pitch", coords[4]);
+			} else if (args.length == 1) {
+				plugin.getConfig().set("player." + player.getName() + "." + args[0] + ".world", player.getWorld().getName());
+				plugin.getConfig().set("player." + player.getName() + "." + args[0] + ".x", coords[0]);
+				plugin.getConfig().set("player." + player.getName() + "." + args[0] + ".y", coords[1]);
+				plugin.getConfig().set("player." + player.getName() + "." + args[0] + ".z", coords[2]);
+				plugin.getConfig().set("player." + player.getName() + "." + args[0] + ".yaw", coords[3]);
+				plugin.getConfig().set("player." + player.getName() + "." + args[0] + ".pitch", coords[4]);
+			} else {
+				return false;
+			}
+			
 			plugin.saveConfig();
 			plugin.reloadConfig();
 			
