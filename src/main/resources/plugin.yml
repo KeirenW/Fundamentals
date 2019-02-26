@@ -13,7 +13,7 @@ commands:
     usage: /pong
   sethome:
     description: Set a home that you can teleport back to
-    usage: /sethome
+    usage: /sethome [name]
   home:
     description: Teleport home
-    usage: /home
+    usage: /home [name]
