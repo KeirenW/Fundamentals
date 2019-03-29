@@ -25,7 +25,6 @@ public class CommandSlap implements CommandExecutor
 			if (slapped == null)
 			{
 				player.sendMessage(ChatColor.RED + "That player is not online");
-				return false;
 			}
 			
 			//Create a vector for giving the player velocity
