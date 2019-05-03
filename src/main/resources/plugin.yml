@@ -9,7 +9,7 @@ commands:
     description: Pong!
     usage: /ping
   pong:
-    description: We know ;)
+    description: ;)
     usage: /pong
   sethome:
     description: Set a home that you can teleport back to
@@ -18,12 +18,12 @@ commands:
     description: Teleport home
     usage: /home [name]
   slap:
-    description: Slap a bitch
+    description: Slap a player
     usage: /slap [name]
     permission: fundamentals.slap
     permission-message: You don't have permssion to use this command
 
 permissions:
   fundamentals.slap:
-    description: Allows you to slap a bitch.
+    description: Allows you to slap a misbehaving player.
     default: op
