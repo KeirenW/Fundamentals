@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -48,14 +47,5 @@ public class CommandHomes implements CommandExecutor {
         }
 
         return false;
-    }
-
-    public String convertWithStream(Map<String, ?> map) {
-        Iterator<String> itr = map.keySet().iterator();
-        while (map.keySet().iterator().hasNext()) {
-            plugin.getLogger().log(Level.INFO, map.keySet().stream().toList().toString());
-            plugin.getLogger().log(Level.INFO, itr.next());
-        }
-        return "";
     }
 }
