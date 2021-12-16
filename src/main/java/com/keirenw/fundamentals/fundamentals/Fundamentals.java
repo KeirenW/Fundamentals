@@ -32,7 +32,7 @@ public final class Fundamentals extends JavaPlugin {
         this.getCommand("sethome").setExecutor(new CommandSetHome(this));
         this.getCommand("home").setExecutor(new CommandHome(this));
         this.getCommand("homes").setExecutor(new CommandHomes(this));
-        this.getCommand("slap").setExecutor(new CommandSlap());
+        this.getCommand("slap").setExecutor(new CommandSlap(this));
     }
 
     @Override

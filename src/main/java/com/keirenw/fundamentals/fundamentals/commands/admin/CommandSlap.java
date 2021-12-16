@@ -1,18 +1,28 @@
 package com.keirenw.fundamentals.fundamentals.commands.admin;
 
+import com.keirenw.fundamentals.fundamentals.Fundamentals;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
-public class CommandSlap implements CommandExecutor
+public class CommandSlap implements CommandExecutor, TabCompleter
 {
+    private final Fundamentals plugin;
+
+    public CommandSlap(Fundamentals instance) {
+        plugin = instance;
+    }
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args)
@@ -37,5 +47,16 @@ public class CommandSlap implements CommandExecutor
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<Player> players = plugin.getServer().getOnlinePlayers().stream().collect(Collectors.toList());
+        List<String> playerNames = new ArrayList<>();
+
+        for (Player player : players) {
+            playerNames.add(player.getName());
+        }
+        return playerNames;
     }
 }

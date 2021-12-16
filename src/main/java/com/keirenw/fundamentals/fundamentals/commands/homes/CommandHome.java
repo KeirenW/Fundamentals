@@ -1,17 +1,20 @@
 package com.keirenw.fundamentals.fundamentals.commands.homes;
 
 import com.keirenw.fundamentals.fundamentals.Fundamentals;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class CommandHome implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class CommandHome implements CommandExecutor, TabCompleter {
     private final Fundamentals plugin;
 
     public CommandHome(Fundamentals instance) {
@@ -19,7 +22,7 @@ public class CommandHome implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, final @NotNull Command cmd, final @NotNull String label, final String[] args) {
         if (sender instanceof Player player) {
             player.getUniqueId();
 
@@ -59,5 +62,19 @@ public class CommandHome implements CommandExecutor {
             throw new Exception("Argument list not recognised");
         }
         return basePath;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        Player player = (Player) sender;
+
+        final String PATH = "player." + player.getUniqueId();
+        FileConfiguration config = plugin.getConfig();
+        Map<String, Object> homesMap = config.getConfigurationSection(PATH).getValues(false);
+
+        List<String> homes = new ArrayList<>();
+        homesMap.keySet().iterator()
+                .forEachRemaining(home -> homes.add(home));
+        return homes;
     }
 }
