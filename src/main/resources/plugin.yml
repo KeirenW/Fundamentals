@@ -1,0 +1,34 @@
+name: Fundamentals
+version: '${project.version}'
+main: com.keirenw.fundamentals.fundamentals.Fundamentals
+api-version: 1.18
+author: Keiren Waddell
+
+
+commands:
+  ping:
+    description: Pong!
+    usage: "Usage: /ping"
+  pong:
+    description: ;)
+    usage: "Usage: /pong"
+  sethome:
+    description: Set a home that you can teleport back to
+    usage: "Usage: /sethome [name]"
+    aliases:
+      - setgaff
+  home:
+    description: Teleport home
+    usage: "Usage: /home [name]"
+    aliases:
+      - gaff
+  homes:
+    description: List your homes
+    usage: "Usage: /homes"
+    aliases:
+      - gaffs
+  slap:
+    description: Slap a bitch
+    usage: "Usage: /slap [name]"
+    permission: fundamentals.slap
+    permission-message: You don't have permssion to use this command
