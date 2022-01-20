@@ -30,6 +30,7 @@ public final class Fundamentals extends JavaPlugin {
         this.getCommand("ping").setExecutor(new CommandPing());
         this.getCommand("pong").setExecutor(new CommandPong());
         this.getCommand("sethome").setExecutor(new CommandSetHome(this));
+        this.getCommand("delhome").setExecutor(new CommandDelHome(this));
         this.getCommand("home").setExecutor(new CommandHome(this));
         this.getCommand("homes").setExecutor(new CommandHomes(this));
         this.getCommand("slap").setExecutor(new CommandSlap(this));

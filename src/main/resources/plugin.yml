@@ -17,6 +17,11 @@ commands:
     usage: "Usage: /sethome [name]"
     aliases:
       - setgaff
+  delhome:
+    description: Delete one of your set homes.
+    usage: "Usage: /delhome [name]"
+    aliases:
+      - delgaff
   home:
     description: Teleport home
     usage: "Usage: /home [name]"
