@@ -57,10 +57,7 @@ public class CommandDelHome implements CommandExecutor, TabCompleter {
 
     private String getBasePath(String[] args, Player player) throws Exception {
         String basePath = "player.";
-        if (args.length == 0 || args[0].toLowerCase() == "home") {
-            // Home name is 'home' or blank
-            basePath = basePath.concat(player.getUniqueId() + ".home");
-        } else if (args.length == 1) {
+        if (args.length == 1) {
             basePath = basePath.concat(player.getUniqueId() + "." + args[0].toLowerCase());
         } else {
             throw new Exception("Argument list not recognised");
