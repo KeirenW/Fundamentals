@@ -30,7 +30,7 @@ public class CommandDelHome implements CommandExecutor, TabCompleter {
             try {
                 String basePath = getBasePath(args, player);
                 plugin.getConfig().set(basePath, null);
-                if (args.length == 0) player.sendMessage(ChatColor.YELLOW + "Deleting Home...");
+                player.sendMessage(ChatColor.YELLOW + "Deleting Home '" + args[0] + "'");
             } catch (Exception e) {
                 Bukkit.getLogger().info(e.getMessage());
                 player.sendMessage(ChatColor.RED + "Unable to delete home " + args[0]);
