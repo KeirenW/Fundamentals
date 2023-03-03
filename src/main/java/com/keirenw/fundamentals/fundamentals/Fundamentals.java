@@ -3,9 +3,14 @@ package com.keirenw.fundamentals.fundamentals;
 import com.keirenw.fundamentals.fundamentals.commands.admin.*;
 import com.keirenw.fundamentals.fundamentals.commands.homes.*;
 import com.keirenw.fundamentals.fundamentals.commands.utils.*;
+import com.keirenw.fundamentals.fundamentals.events.*;
+import com.keirenw.fundamentals.fundamentals.recipes.*;
+import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Fundamentals extends JavaPlugin {
 
@@ -26,7 +31,7 @@ public final class Fundamentals extends JavaPlugin {
             saveConfig();
         }
 
-        //Setup commands and event listeners
+        // Commands
         this.getCommand("ping").setExecutor(new CommandPing());
         this.getCommand("pong").setExecutor(new CommandPong());
         this.getCommand("sethome").setExecutor(new CommandSetHome(this));
@@ -34,6 +39,16 @@ public final class Fundamentals extends JavaPlugin {
         this.getCommand("home").setExecutor(new CommandHome(this));
         this.getCommand("homes").setExecutor(new CommandHomes(this));
         this.getCommand("slap").setExecutor(new CommandSlap(this));
+
+        // Recipes
+        List<NamespacedKey> keys = new ArrayList<>();
+        // 9 Rotten Flesh -> Leather
+        NamespacedKey rf2lKey = new NamespacedKey(this, "leather");
+        getServer().addRecipe(new RecipeLeather(getLogger(), rf2lKey).Initialise());
+        keys.add(rf2lKey);
+
+        // Event Listeners
+        getServer().getPluginManager().registerEvents(new EventPlayerJoin(getLogger(), keys), this);
     }
 
     @Override
