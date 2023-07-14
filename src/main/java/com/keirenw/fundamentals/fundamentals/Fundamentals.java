@@ -34,6 +34,7 @@ public final class Fundamentals extends JavaPlugin {
         // Commands
         this.getCommand("ping").setExecutor(new CommandPing());
         this.getCommand("pong").setExecutor(new CommandPong());
+        this.getCommand("spawn").setExecutor(new CommandSpawn());
         this.getCommand("sethome").setExecutor(new CommandSetHome(this));
         this.getCommand("delhome").setExecutor(new CommandDelHome(this));
         this.getCommand("home").setExecutor(new CommandHome(this));
@@ -42,10 +43,10 @@ public final class Fundamentals extends JavaPlugin {
 
         // Recipes
         List<NamespacedKey> keys = new ArrayList<>();
-        // 9 Rotten Flesh -> Leather
-        NamespacedKey rf2lKey = new NamespacedKey(this, "leather");
-        getServer().addRecipe(new RecipeLeather(getLogger(), rf2lKey).Initialise());
-        keys.add(rf2lKey);
+            // 9 Rotten Flesh -> Leather
+            NamespacedKey rf2lKey = new NamespacedKey(this, "leather");
+            getServer().addRecipe(new RecipeLeather(getLogger(), rf2lKey).Initialise());
+            keys.add(rf2lKey);
 
         // Event Listeners
         getServer().getPluginManager().registerEvents(new EventPlayerJoin(getLogger(), keys), this);
