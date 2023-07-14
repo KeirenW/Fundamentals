@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -19,6 +20,10 @@ public class CommandSpawn implements CommandExecutor {
         if (sender instanceof Player player) {
             try {
                 Location spawn = Bukkit.getWorld("world").getSpawnLocation();
+
+                if (spawn == null)
+                    throw new CommandException("Spawn location could not be found.");
+
                 player.teleport(spawn);
 
                 player.sendMessage(ChatColor.YELLOW + "Teleporting to spawn...");
